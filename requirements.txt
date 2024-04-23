@@ -1,0 +1,59 @@
+pandas
+pyyaml
+numpy
+pytest==7.4.2
+black==23.9.1
+typing
+ipywidgets
+ipykernel
+ipython
+joblib
+typer==0.6.1
+
+# Transformers
+openai
+transformers==4.40.0
+optimum
+text2vec
+#sentence_transformers
+onnx
+#fastembed
+
+# Pydantic
+pydantic==2.3.0
+pydantic-extra-types==2.1.0
+pydantic-settings==2.0.3
+pydantic_core==2.6.3
+
+# Langchain
+langchain
+langchain_core
+langchain_community
+langchain_anthropic
+langchain_openai
+#langchain_mistralai
+
+# Llama-index
+llama-index==0.10.29
+llama-index-core #==0.9.32 #0.10.1
+#llama-index-program-guidance
+#llama-index-program-lmformatenforcer
+#llama-index-llms-llama-cpp
+#lm-format-enforcer 
+#llama-cpp-python
+#llama-index-llms-azure-openai
+llama-cpp-python
+llama-cpp-python[server]
+uvicorn
+fastapi
+
+# Qdrant
+qdrant_client
+
+# OpenTelemetry
+opentelemetry-instrumentation==0.36b0 
+opentelemetry-semantic-conventions==0.36b0
+
+# Customs
+git+ssh://git@github.com/Neuralk-AI/tracking.git
+-e .
