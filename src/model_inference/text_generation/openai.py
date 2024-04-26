@@ -65,10 +65,10 @@ class OpenAILLM(BaseLLM):
                     api_version=api_version,
                     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
                 )
-                self.llm = AzureChatOpenAI(
-                    openai_api_version=api_version,
-                    azure_deployment=model,
-                )
+                # self.llm = AzureChatOpenAI(
+                #    openai_api_version=api_version,
+                #    azure_deployment=model,
+                # )
 
         except NotImplementedError as ex:
             console.log(
@@ -143,7 +143,7 @@ class OpenAILLM(BaseLLM):
     def generate(
         self,
         messages: List[Dict[str, str]] = "",
-        temperature=1,
+        temperature=0,
         max_tokens=2400,
         top_p=0.95,
         frequency_penalty=0,
@@ -172,7 +172,7 @@ class OpenAILLM(BaseLLM):
     async def _agenerate(
         self,
         messages: List[Dict[str, str]] = "",
-        temperature=1,
+        temperature=0,
         max_tokens=2400,
         top_p=0.95,
         frequency_penalty=0,

@@ -1,6 +1,7 @@
 pandas
 pyyaml
 numpy
+rich
 pytest==7.4.2
 black==23.9.1
 typing
@@ -55,5 +56,6 @@ opentelemetry-instrumentation==0.36b0
 opentelemetry-semantic-conventions==0.36b0
 
 # Customs
-git+ssh://git@github.com/Neuralk-AI/tracking.git
+-e /Users/alexpsq/Code/Neuralk-AI/tracking
+#git+ssh://git@github.com/Neuralk-AI/tracking.git
 -e .

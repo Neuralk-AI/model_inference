@@ -6,7 +6,7 @@ Alexandre Pasquiou - November 2023
 
 import json
 
-from langchain_mistralai import ChatMistralAI
+# from langchain_mistralai import ChatMistralAI
 from typing import List, Dict
 from tracking.progress import console
 
@@ -42,7 +42,7 @@ class MistralAILLM(BaseLLM):
         if model in ["mistral-large-latest"]:  # /!\#
             # Cannot set the model = OpenAI(model) yet
             self.model = model
-            self.llm = ChatMistralAI(model=model, temperature=0)
+            # self.llm = ChatMistralAI(model=model, temperature=0)
             # /!\#self.client = OpenAI(**kwargs)
 
         else:

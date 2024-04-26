@@ -8,7 +8,8 @@ import json
 from typing import List, Dict
 from huggingface_hub import InferenceClient
 from transformers import AutoTokenizer, pipeline
-from optimum.onnxruntime import ORTModelForQuestionAnswering
+
+# from optimum.onnxruntime import ORTModelForQuestionAnswering
 
 from tracking.progress import console
 
