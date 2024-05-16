@@ -51,6 +51,8 @@ models = [
     "distiluse-base-multilingual-cased-v2",
     "average_word_embeddings_komninos",
     "average_word_embeddings_glove.6B.300d",
+    "OrdalieTech/Solon-embeddings-base-0.1",
+    "OrdalieTech/Solon-embeddings-large-0.1",
 ]
 
 
@@ -73,7 +75,7 @@ class SentenceTransformerEmbeddingModel(BaseEmbeddingModel):
         embeddings = self.model.encode(query)
         return embeddings
 
-    def compute_dist(self, vector1: np.array, vector2: np.array):
+    def compute_score(self, vector1: np.array, vector2: np.array):
         """Compute the distance between pairs of vectors"""
         score = util.dot_score(vector1, vector2)
         return score

@@ -23,6 +23,6 @@ class BaseEmbeddingModel:
         """Embed the input query"""
         raise NotImplementedError("Do your job.")
 
-    def compute_dist(self, vector1: np.array, vector2: np.array):
+    def compute_score(self, vector1: np.array, vector2: np.array):
         """Compute the distance between pairs of vectors"""
         raise NotImplementedError("Do your job.")
