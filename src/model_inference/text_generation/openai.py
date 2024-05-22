@@ -129,13 +129,16 @@ class OpenAILLM(BaseLLM):
                 + self.function_calling_format
                 + ". Only use the functions if required !"
             )
-
-        messages.append(
-            {"role": "system", "content": " ".join([system_prompt, function_prompt])}
-        )
-        if history != []:
+        if (system_prompt != "") and (system_prompt is not None):
+            messages.append(
+                {
+                    "role": "system",
+                    "content": " ".join([system_prompt, function_prompt]),
+                }
+            )
+        if (history != []) and (history is not None):
             messages.extend(history)
-        if user_prompt != "":
+        if (user_prompt != "") and (user_prompt is not None):
             messages.append({"role": role, "content": user_prompt})
 
         return messages

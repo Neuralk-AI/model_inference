@@ -1,4 +1,7 @@
 # Imports
+import pickle
+import numpy as np
+from typing import List
 from model_inference.text_generation import *
 
 # Variables
@@ -63,3 +66,32 @@ def load_model(name, language="en"):
         model = _load_custom_model(name, language=language)
 
     return model
+
+
+def load_embeddings(
+    sentences: List[str], embeddings: np.array, path: str = "embeddings.pkl"
+) -> None:
+    """ """
+    # Store sentences & embeddings on disc
+    with open(path, "wb") as fOut:
+        pickle.dump(
+            {"sentences": sentences, "embeddings": embeddings},
+            fOut,
+            protocol=pickle.HIGHEST_PROTOCOL,
+        )
+
+
+def load_embeddings(path: str = "embeddings.pkl") -> tuple:
+    """
+    Args:
+        - path: str (path to where the data is saved)
+    Returns:
+        - stored_sentences: List[str]
+        - stored_embeddings: np.array
+    """
+    # Load sentences & embeddings from disc
+    with open(path, "rb") as fIn:
+        stored_data = pickle.load(fIn)
+        stored_sentences = stored_data["sentences"]
+        stored_embeddings = stored_data["embeddings"]
+    return stored_sentences, stored_embeddings

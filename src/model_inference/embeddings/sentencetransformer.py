@@ -5,7 +5,7 @@ Alexandre Pasquiou - April 2024
 """
 
 import numpy as np
-from typing import List, Any
+from typing import List, Any, Dict, Optional
 from sentence_transformers import SentenceTransformer, util
 
 from model_inference.embeddings import BaseEmbeddingModel
@@ -59,7 +59,11 @@ models = [
 class SentenceTransformerEmbeddingModel(BaseEmbeddingModel):
 
     def __init__(
-        self, model: str = "multi-qa-MiniLM-L6-cos-v1", language: str = "en"
+        self,
+        model: str = "OrdalieTech/Solon-embeddings-large-0.1",
+        language: str = "en",
+        prompts: Optional[Dict[str, str]] = None,
+        default_prompt_name: Optional[str] = None,
     ):  # multi-qa-mpnet-base-dot-v1
         """
         Instantiate an Embedding Model.
@@ -68,11 +72,28 @@ class SentenceTransformerEmbeddingModel(BaseEmbeddingModel):
         """
         self.model_name = model
         self.language = language
-        self.model = SentenceTransformer(model)
+        self.model = SentenceTransformer(
+            model_name_or_path=model,
+            prompts=prompts,
+            default_prompt_name=default_prompt_name,
+        )
 
-    def embed(self, query: str | List[str]) -> Any:
+    def embed(
+        self,
+        query: str | List[str],
+        prompt_name: Optional[str] = None,
+        prompt: Optional[str] = None,
+        batch_size: int = 32,
+        show_progress_bar: Optional[bool] = None,
+    ) -> Any:
         """Embed the input query"""
-        embeddings = self.model.encode(query)
+        embeddings = self.model.encode(
+            sentences=query,
+            prompt_name=prompt_name,
+            prompt=prompt,
+            batch_size=batch_size,
+            show_progress_bar=show_progress_bar,
+        )
         return embeddings
 
     def compute_score(self, vector1: np.array, vector2: np.array):
