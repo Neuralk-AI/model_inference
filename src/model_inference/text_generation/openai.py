@@ -6,11 +6,9 @@ Alexandre Pasquiou - November 2023
 
 import os
 import json
-import openai
 import asyncio
 from typing import List, Dict
 from openai import AzureOpenAI, AsyncAzureOpenAI
-from langchain_openai import AzureChatOpenAI
 
 from tracking.progress import console
 from model_inference.text_generation import BaseLLM
@@ -38,7 +36,9 @@ class OpenAILLM(BaseLLM):
         model: str = "gpt-3.5-turbo-0125",
         language: str = "en",
         api_version: str = "2024-02-01",
-        async_=False,
+        async_: bool = False,
+        api_key: str = None,
+        azure_endpoint: str = None,
         **kwargs,
     ):
         """Instantiate an OpenAI LLM.
@@ -49,21 +49,29 @@ class OpenAILLM(BaseLLM):
         self.self_hosted = False
         self.language = language
         self.async_ = async_
+        self.api_key = (
+            api_key if api_key is not None else os.getenv("AZURE_OPENAI_API_KEY")
+        )
+        self.azure_endpoint = (
+            azure_endpoint
+            if azure_endpoint is not None
+            else os.getenv("AZURE_OPENAI_ENDPOINT")
+        )
         try:
             self.model_name = model
             # self.client = OpenAI(**kwargs)
             # self.llm = ChatOpenAI(model=model, temperature=0)
             if async_:
                 self.client = AsyncAzureOpenAI(
-                    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+                    api_key=self.api_key,
                     api_version=api_version,
-                    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+                    azure_endpoint=self.azure_endpoint,
                 )
             else:
                 self.client = AzureOpenAI(
-                    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+                    api_key=self.api_key,
                     api_version=api_version,
-                    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+                    azure_endpoint=self.azure_endpoint,
                 )
                 # self.llm = AzureChatOpenAI(
                 #    openai_api_version=api_version,

@@ -2,7 +2,7 @@ pandas
 pyyaml
 numpy
 rich
-pytest==7.4.2
+#pytest==7.4.2
 black==23.9.1
 typing
 ipywidgets
@@ -29,8 +29,8 @@ pydantic_core==2.6.3
 # Langchain
 langchain
 langchain_core
-langchain_community
-langchain_anthropic
+#langchain_community
+#langchain_anthropic
 langchain_openai
 #langchain_mistralai
 
@@ -43,17 +43,17 @@ llama-index-core #==0.9.32 #0.10.1
 #lm-format-enforcer 
 #llama-cpp-python
 #llama-index-llms-azure-openai
-llama-cpp-python
-llama-cpp-python[server]
-uvicorn
-fastapi
+#llama-cpp-python
+#llama-cpp-python[server]
+#uvicorn
+#fastapi
 
 # Qdrant
 qdrant_client
 
 # OpenTelemetry
-opentelemetry-instrumentation==0.36b0 
-opentelemetry-semantic-conventions==0.36b0
+#opentelemetry-instrumentation==0.36b0 
+#opentelemetry-semantic-conventions==0.36b0
 
 # Customs
 -e /Users/alexpsq/Code/Neuralk-AI/tracking

@@ -4,6 +4,8 @@ Base class for LLMs.
 Alexandre Pasquiou - April 2024
 """
 
+import requests
+
 import numpy as np
 from typing import List, Any, Dict, Optional
 from sentence_transformers import SentenceTransformer, util
@@ -11,7 +13,7 @@ from sentence_transformers import SentenceTransformer, util
 from model_inference.embeddings import BaseEmbeddingModel
 
 
-models = [
+st_models = [
     "all-MiniLM-L6-v2",
     "all-mpnet-base-v2",
     "gtr-t5-xxl",
