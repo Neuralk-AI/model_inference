@@ -18,9 +18,7 @@ code_path = project_root / "src/dataset_cleaning"
 
 class Settings:
     SECRET_KEY: str = secrets.token_urlsafe(32)
-    PINECONE_API_KEY: str = "63185059-eafa-4759-bf16-121673c4ee94"
     # find ENV (cloud region) next to API key in console
-    PINECONE_ENV: str = "us-west1-gcp-free"
     # 60 minutes * 24 hours * 8 days = 8 days
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
 

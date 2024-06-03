@@ -4,8 +4,6 @@ Base class for LLMs.
 Alexandre Pasquiou - April 2024
 """
 
-import requests
-
 import numpy as np
 from typing import List, Any, Dict, Optional
 from sentence_transformers import SentenceTransformer, util

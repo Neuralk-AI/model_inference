@@ -153,7 +153,7 @@ class OpenAILLM(BaseLLM):
 
     def generate(
         self,
-        messages: List[Dict[str, str]] = "",
+        messages: List[Dict[str, str]],
         temperature=0,
         max_tokens=2400,
         top_p=0.95,

@@ -4,6 +4,7 @@ Base class for LLMs.
 Alexandre Pasquiou - April 2024
 """
 
+import os
 from typing import Dict, Optional
 
 from model_inference.embeddings.sentencetransformer import (
@@ -23,7 +24,7 @@ class AutoEmbeddingModel:
         prompts: Optional[Dict[str, str]] = None,
         default_prompt_name: Optional[str] = None,
         headers: Dict = {
-            "Authorization": "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",
+            "Authorization": os.environ["HF_TOKEN"],
             "Content-Type": "application/json",
             "accept": "application/json",
         },

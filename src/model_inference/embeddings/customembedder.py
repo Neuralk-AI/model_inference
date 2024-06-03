@@ -25,7 +25,7 @@ class CustomEmbeddingModel(BaseEmbeddingModel):
         prompts: Optional[Dict[str, str]] = None,
         default_prompt_name: Optional[str] = None,
         headers: Dict = {
-            "Authorization": "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",
+            "Authorization": os.environ["HF_TOKEN"],
             "Content-Type": "application/json",
             "accept": "application/json",
         },
